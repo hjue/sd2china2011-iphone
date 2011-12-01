@@ -8,9 +8,16 @@
 
 #import "AppDelegate.h"
 
-#import "FirstViewController.h"
+#import "ScheduleViewController.h"
 
-#import "SecondViewController.h"
+#import "PlaceViewController.h"
+
+#import "HomeViewController.h"
+
+#import "WeiboViewController.h"
+#import "MoreViewController.h"
+#import "LectorViewController.h"
+#import "JsonDataSource.h"
 
 @implementation AppDelegate
 
@@ -21,12 +28,28 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
-    UIViewController *viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
+    UIViewController *scheduleViewController = [[ScheduleViewController alloc] initWithNibName:@"ScheduleViewController" bundle:nil];
+    
+//    UIViewController *viewController2 = [[PlaceViewController alloc] initWithNibName:@"PlaceViewController" bundle:nil];
+    
+    UIViewController* homeViewController = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
+    UITableViewController* weiboViewController = [[WeiboViewController alloc]initWithNibName:@"WeiboViewController" bundle:nil];
+    UITableViewController* moreViewController = [[MoreViewController alloc]initWithNibName:@"MoreViewController" bundle:nil];
+    UITableViewController* lectorViewController = [[LectorViewController alloc]initWithNibName:@"LectorViewController" bundle:nil];
+    
+    UINavigationController *navWeibo = [[UINavigationController alloc]initWithRootViewController:weiboViewController];
+
+    UINavigationController *navSchedule = [[UINavigationController alloc]initWithRootViewController:scheduleViewController];
+
+    UINavigationController *navLector = [[UINavigationController alloc]initWithRootViewController:lectorViewController];
+    
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController,navSchedule, navLector, navWeibo,moreViewController,nil];
+    
+    self.tabBarController.selectedIndex = 0;
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
