@@ -4,5 +4,7 @@
 <dict>
 	<key>refresh_url</key>
 	<string>http://articles.csdn.net/mdcc/news.server.php</string>
+	<key>version_url</key>
+	<string>http://articles.csdn.net/mdcc/news.server.php?type=version</string>
 </dict>
 </plist>

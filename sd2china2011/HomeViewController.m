@@ -14,6 +14,7 @@
 
 @implementation HomeViewController
 @synthesize bgimage;
+@synthesize btnUpdate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,7 +25,7 @@
                       
     }
     
-    [self.bgimage setImage:[UIImage imageNamed:@"Default.png"]];
+    
     
     
     data = [[JsonDataSource jsonObjectWithFile:@"home"]objectForKey:@"home"];
@@ -47,12 +48,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.bgimage setImage:[UIImage imageNamed:@"Default.png"]];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
     [self setBgimage:nil];
+    [self setBtnUpdate:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -83,6 +86,7 @@
     //NSString* content = [data.share valueForKey:@"content"];
     //NSString* url = [data.share valueForKey:@"url"];
     JsonDataSource* jsonDataSource = [[JsonDataSource alloc]init];
+    [btnUpdate setEnabled:NO];
     [jsonDataSource updateDataFromRemote];
 ;    
 }

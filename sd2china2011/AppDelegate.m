@@ -19,10 +19,15 @@
 #import "LectorViewController.h"
 #import "JsonDataSource.h"
 
+
+
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
+
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -48,6 +53,9 @@
     
     self.tabBarController.selectedIndex = 0;
     self.window.rootViewController = self.tabBarController;
+    
+    JsonDataSource* js = [[JsonDataSource alloc]init];
+    [js updateDataFromRemote];
     [self.window makeKeyAndVisible];
     
     return YES;

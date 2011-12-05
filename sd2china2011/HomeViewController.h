@@ -16,6 +16,7 @@
     NSDictionary * data;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *bgimage;
+@property (strong, nonatomic) IBOutlet UIButton *btnUpdate;
 
 - (IBAction)phonePressed:(UIButton*)sender;
 - (IBAction)sharePressed:(UIButton*)sender;
