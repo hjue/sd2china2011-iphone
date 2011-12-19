@@ -14,8 +14,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"更多 ";
+        
         self.tabBarItem = [[UITabBarItem alloc]initWithTabBarSystemItem:UITabBarSystemItemMore tag:0];
+        self.title = @"更多 ";
+        self.tabBarItem.title = @"更多";
     }
     return self;
 }

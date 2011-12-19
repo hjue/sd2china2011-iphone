@@ -15,24 +15,57 @@
 @implementation HomeViewController
 @synthesize bgimage;
 @synthesize btnUpdate;
-
+@synthesize locationManager;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"首页";
         self.tabBarItem.image = [UIImage imageNamed:@"icon_home.png"];
-                      
+        
+        self.locationManager = [[CLLocationManager alloc]init];
+        self.locationManager.delegate = self;
+        [self.locationManager startUpdatingLocation];
+        //[self performSelector:@ withObject:<#(id)#> afterDelay:<#(NSTimeInterval)#>
+        myLocation = nil;
+        data = [[JsonDataSource jsonObjectWithFile:@"home"]objectForKey:@"home"];                      
     }
-    
-    
-    
-    
-    data = [[JsonDataSource jsonObjectWithFile:@"home"]objectForKey:@"home"];
+
 
     
     
     return self;
+}
+
+-(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    
+    float flat,flongt;
+    flat = newLocation.coordinate.latitude;
+    flongt = newLocation.coordinate.longitude;
+    
+    NSLog(@"lat:%f  longt:%f",flat,flongt);
+    myLocation = newLocation;
+    
+//    int degrees = newLocation.coordinate.latitude;
+//    
+//    double decimal = fabs(newLocation.coordinate.latitude - degrees);
+//    int minutes = decimal * 60;
+//    double seconds = decimal * 3600 - minutes * 60;
+//    NSString *lat = [NSString stringWithFormat:@"%d° %d' %1.4f\"", 
+//                     degrees, minutes, seconds];
+//
+//    degrees = newLocation.coordinate.longitude;
+//    decimal = fabs(newLocation.coordinate.longitude - degrees);
+//    minutes = decimal * 60;
+//    seconds = decimal * 3600 - minutes * 60;
+//    NSString *longt = [NSString stringWithFormat:@"%d° %d' %1.4f\"", 
+//                       degrees, minutes, seconds];
+    
+    //39.995334,116.46742
+    
+    [locationManager stopUpdatingHeading];
+    locationManager.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,7 +129,17 @@
 //    double latitude = [[data.location valueForKey:@"latitude"]doubleValue];
 //    double longitude = [[data.location valueForKey:@"longitude"]doubleValue];
     NSString* title = [data objectForKey:@"location"];
-    NSString* mapurl = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=&daddr=%@",[title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ];
+    NSString* saddr;
+    if(myLocation == nil)
+    {
+        saddr = @"";
+    }else
+    {
+        saddr = [NSString stringWithFormat:@"%f,%f",myLocation.coordinate.latitude,myLocation.coordinate.longitude];
+    }
+    NSString* mapurl = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%@&daddr=%@",saddr,[title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ];
+    
+    NSLog(@"%@",mapurl);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mapurl]];
 
 }

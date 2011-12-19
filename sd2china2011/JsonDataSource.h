@@ -10,6 +10,8 @@
 
 @interface JsonDataSource : NSObject
 
++(id) sharedDataSource;
+
 +(NSDictionary* ) jsonObjectWithFile:(NSString*) name;
 
 -(BOOL) updateDataFromRemote;

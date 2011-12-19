@@ -49,13 +49,15 @@
     UINavigationController *navLector = [[UINavigationController alloc]initWithRootViewController:lectorViewController];
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController,navSchedule, navLector, navWeibo,moreViewController,nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:homeViewController,navSchedule, navLector, navWeibo,weiboViewController,weiboViewController,nil];
     
     self.tabBarController.selectedIndex = 0;
     self.window.rootViewController = self.tabBarController;
     
+    //update data
     JsonDataSource* js = [[JsonDataSource alloc]init];
     [js updateDataFromRemote];
+    
     [self.window makeKeyAndVisible];
     
     return YES;

@@ -58,6 +58,8 @@
 		729FB089147E29D600A0ECC9 /* icon_notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 729FB081147E29D600A0ECC9 /* icon_notepad.png */; };
 		729FB08A147E29D600A0ECC9 /* icon_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 729FB082147E29D600A0ECC9 /* icon_star.png */; };
 		729FB08B147E29D600A0ECC9 /* icon_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 729FB083147E29D600A0ECC9 /* icon_chat.png */; };
+		72A6FA52148DBB3100D03A36 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A6FA51148DBB3000D03A36 /* CoreLocation.framework */; };
+		72A6FA58148DC6F800D03A36 /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 72A6FA57148DC6F800D03A36 /* Location.gpx */; };
 		72B886E514811C1F00165490 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B886E314811C1F00165490 /* PlaceViewController.m */; };
 		72B886E614811C1F00165490 /* PlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72B886E414811C1F00165490 /* PlaceViewController.xib */; };
 		72B886EF1481B3CB00165490 /* WeiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B886ED1481B3CB00165490 /* WeiboViewController.m */; };
@@ -279,6 +281,8 @@
 		729FB081147E29D600A0ECC9 /* icon_notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_notepad.png; sourceTree = "<group>"; };
 		729FB082147E29D600A0ECC9 /* icon_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_star.png; sourceTree = "<group>"; };
 		729FB083147E29D600A0ECC9 /* icon_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_chat.png; sourceTree = "<group>"; };
+		72A6FA51148DBB3000D03A36 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		72A6FA57148DC6F800D03A36 /* Location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		72B886E214811C1F00165490 /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceViewController.h; sourceTree = "<group>"; };
 		72B886E314811C1F00165490 /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceViewController.m; sourceTree = "<group>"; };
 		72B886E414811C1F00165490 /* PlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceViewController.xib; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72A6FA52148DBB3100D03A36 /* CoreLocation.framework in Frameworks */,
 				72D48013148C723B0018FCDC /* SystemConfiguration.framework in Frameworks */,
 				72288F60147E89F500108E60 /* MapKit.framework in Frameworks */,
 				729FB033147DE88300A0ECC9 /* UIKit.framework in Frameworks */,
@@ -382,6 +387,8 @@
 		729FB023147DE88300A0ECC9 = {
 			isa = PBXGroup;
 			children = (
+				72A6FA57148DC6F800D03A36 /* Location.gpx */,
+				72A6FA51148DBB3000D03A36 /* CoreLocation.framework */,
 				72D48012148C723A0018FCDC /* SystemConfiguration.framework */,
 				72288F5F147E89F500108E60 /* MapKit.framework */,
 				729FB038147DE88300A0ECC9 /* sd2china2011 */,
@@ -421,8 +428,6 @@
 			children = (
 				72B886F11481B3E200165490 /* Classes */,
 				72B886EB1481B0B500165490 /* Resources */,
-				72288F31147E335700108E60 /* Model */,
-				72288F06147E31FE00108E60 /* SBJson */,
 				729FB039147DE88300A0ECC9 /* Supporting Files */,
 				72288F63147E8F2800108E60 /* MyAnnotation.h */,
 				72288F64147E8F2800108E60 /* MyAnnotation.m */,
@@ -498,12 +503,14 @@
 		72B886F11481B3E200165490 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				72D4800F148C678A0018FCDC /* Reachability.h */,
+				72288F06147E31FE00108E60 /* SBJson */,
+				72288F31147E335700108E60 /* Model */,
+				7219324314837EA9002BD313 /* GTMBase64 */,
 				72D48010148C678A0018FCDC /* Reachability.m */,
+				72D4800F148C678A0018FCDC /* Reachability.h */,
 				7219316E14835DFD002BD313 /* JsonDataSource.h */,
 				7219316F14835DFE002BD313 /* JsonDataSource.m */,
 				72B886E214811C1F00165490 /* PlaceViewController.h */,
-				7219324314837EA9002BD313 /* GTMBase64 */,
 				72B886E314811C1F00165490 /* PlaceViewController.m */,
 				729FB041147DE88300A0ECC9 /* AppDelegate.h */,
 				729FB042147DE88300A0ECC9 /* AppDelegate.m */,
@@ -741,6 +748,7 @@
 				7219323E148378EC002BD313 /* lecturer.json in Resources */,
 				7219330814871C8C002BD313 /* config.plist in Resources */,
 				72E6C9A91487BF0400E916E5 /* Default.png in Resources */,
+				72A6FA58148DC6F800D03A36 /* Location.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

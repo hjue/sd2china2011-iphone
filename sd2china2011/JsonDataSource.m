@@ -11,8 +11,34 @@
 #import "HomeViewController.h"
 #import "Reachability.h"
 
+static JsonDataSource* sharedDataSource = nil;
 
 @implementation JsonDataSource
+
++(id)sharedDataSource
+{
+    @synchronized(self) {
+        if(sharedDataSource==nil)
+        {
+            sharedDataSource = [[self alloc]init];
+        }
+    }
+    return  sharedDataSource;
+        
+        
+}
+
+- (id)init {
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
+
+- (void)dealloc {
+    // Should never be called, but just here for clarity really.
+    // [something release]
+}
 
 
 +(NSDictionary* ) jsonObjectWithFile:(NSString*) name
@@ -67,7 +93,19 @@
 -(int) versionWithRemote
 {
     NSString* path = [[NSBundle mainBundle]pathForResource:@"config" ofType:@"plist"];
+
+    NSFileManager* fm = [NSFileManager defaultManager];
+    if([fm isWritableFileAtPath:path])
+        NSLog(@"isWritable:%@",path);
+    else
+        NSLog(@"isReadonly:%@",path);
+    
+    
     NSDictionary* config = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+//    [config setValue:@"2" forKey:@"version"];
+//    [config writeToFile:path atomically:YES];
+    
     
     NSString* version_url = [config objectForKey:@"version_url"];
     //version_url = [version_url stringByAppendingString:@"a"];
